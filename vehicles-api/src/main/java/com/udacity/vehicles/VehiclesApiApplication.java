@@ -41,7 +41,7 @@ public class VehiclesApiApplication {
     }
 
     @Bean
-    public ModelMapper modelMapper() {
+    public ModelMapper modelMapper() { //is a Java library that simplifies the process of mapping objects from one type to another
         return new ModelMapper();
     }
 
@@ -50,8 +50,8 @@ public class VehiclesApiApplication {
      * @param endpoint where to communicate for the maps API
      * @return created maps endpoint
      */
-    @Bean(name="maps")
-    public WebClient webClientMaps(@Value("${maps.endpoint}") String endpoint) {
+    @Bean(name="maps") // use the name to differential the two WebClient. @Qualifier("maps") when add as a parameter.
+    public WebClient webClientMaps(@Value("${maps.endpoint}") String endpoint) { //@Value("${maps.endpoint}") retrieve the value from maps.endpoint at application property
         return WebClient.create(endpoint);
     }
 
@@ -61,7 +61,7 @@ public class VehiclesApiApplication {
      * @return created pricing endpoint
      */
     @Bean(name="pricing")
-    public WebClient webClientPricing(@Value("${pricing.endpoint}") String endpoint) {
+    public WebClient webClientPricing(@Value("${pricing.endpoint}") String endpoint) { //WebClient is a part of Spring WebFlux and is used to perform HTTP requests.
         return WebClient.create(endpoint);
     }
 

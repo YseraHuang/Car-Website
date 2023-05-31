@@ -11,5 +11,5 @@ public class CarNotFoundException extends RuntimeException {
 
     public CarNotFoundException(String message) {
         super(message);
-    }
+    } // super(message) is calling the construtor of the parent class
 }

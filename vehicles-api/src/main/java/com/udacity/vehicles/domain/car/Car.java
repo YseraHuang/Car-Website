@@ -21,25 +21,25 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  * Declares the Car class, related variables and methods.
  */
 @Entity
-@EntityListeners(AuditingEntityListener.class)
+@EntityListeners(AuditingEntityListener.class) //get the specific lifecycle events of the car entity. like creation and modification
 public class Car {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @CreatedDate
+    @CreatedDate  //in combine with @EntityListeners
     private LocalDateTime createdAt;
 
-    @LastModifiedDate
+    @LastModifiedDate //in combine with @EntityListeners
     private LocalDateTime modifiedAt;
 
-    @NotNull
+    @NotNull //annotated field must not be assigned a null value.
     @Enumerated(EnumType.STRING)
     private Condition condition;
 
-    @Valid
-    @Embedded
+    @Valid //the field should be validated
+    @Embedded //embedded object
     private Details details = new Details();
 
     @Valid
@@ -47,7 +47,7 @@ public class Car {
     private Location location = new Location(0d, 0d);
 
     @Transient
-    private String price;
+    private String price; //  non-persistent, the field should not be mapped to a column in the database table.
 
     public Long getId() {
         return id;

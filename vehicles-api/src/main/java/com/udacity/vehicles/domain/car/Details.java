@@ -10,10 +10,10 @@ import javax.validation.constraints.NotNull;
  * Declares the additional detail variables for each Car object,
  * along with related methods for access and setting.
  */
-@Embeddable
+@Embeddable //specify that a class can be embedded within another entity class.
 public class Details {
 
-    @NotBlank
+    @NotBlank //ensures the annotated field is not null and does not consist only of whitespace
     private String body;
 
     @NotBlank

@@ -19,7 +19,7 @@ public class Location {
     @NotNull
     private Double lon;
 
-    @Transient
+    @Transient // not persistent, should not map to database
     private String address;
 
     @Transient

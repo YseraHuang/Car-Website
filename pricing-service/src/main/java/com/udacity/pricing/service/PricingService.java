@@ -17,10 +17,10 @@ public class PricingService {
     /**
      * Holds {ID: Price} pairings (current implementation allows for 20 vehicles)
      */
-    private static final Map<Long, Price> PRICES = LongStream
+    private static final Map<Long, Price> PRICES = LongStream // Map is an HashMap. Value is a Price Object
             .range(1, 20)
             .mapToObj(i -> new Price("USD", randomPrice(), i))
-            .collect(Collectors.toMap(Price::getVehicleId, p -> p));
+            .collect(Collectors.toMap(Price::getVehicleId, p -> p)); // Price is the class
 
     /**
      * If a valid vehicle ID, gets the price of the vehicle from the stored array.

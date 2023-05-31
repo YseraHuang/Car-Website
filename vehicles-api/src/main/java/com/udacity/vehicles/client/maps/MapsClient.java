@@ -16,8 +16,8 @@ public class MapsClient {
 
     private static final Logger log = LoggerFactory.getLogger(MapsClient.class);
 
-    private final WebClient client;
-    private final ModelMapper mapper;
+    private final WebClient client; //use it to access the api
+    private final ModelMapper mapper; // this is the mapper declare in spring as a bean
 
     public MapsClient(WebClient maps,
             ModelMapper mapper) {
@@ -41,9 +41,9 @@ public class MapsClient {
                             .queryParam("lon", location.getLon())
                             .build()
                     )
-                    .retrieve().bodyToMono(Address.class).block();
+                    .retrieve().bodyToMono(Address.class).block(); //block the execution until the response is received
 
-            mapper.map(Objects.requireNonNull(address), location);
+            mapper.map(Objects.requireNonNull(address), location); //mapping the properties to from address to location
 
             return location;
         } catch (Exception e) {
